@@ -1,0 +1,25 @@
+server:
+  port: 9092
+spring:
+  application:
+    name: eurekaclient-consumer
+
+
+#### eureka client 配置
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8081/eureka/,http://127.0.0.1:8082/eureka/
+
+## 暴露端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "hystrix.stream"]

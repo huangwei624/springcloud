@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/hu_wen/springcloud-config
+          username: 1967498464@qq.com
+          password: 123huangwei
+      label: master
+  rabbitmq:
+    host: 106.14.58.20
+    port: 5672
+    username: guest
+    password: guest
+
+
+server:
+  port: 9999
+
+## 将配置中心注册到eureka 服务中
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8081/eureka
+
+## 暴露消息推送接口
+## http://localhost:9999/bus/refresh
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      name: config-client
+      profile: test
+      label: master
+      uri: http://127.0.0.1:9999
+  rabbitmq:
+    host: 106.14.58.20
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

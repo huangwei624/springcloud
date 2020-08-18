@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: SPRING-CLOUD-ADMIN
+
+server:
+  port: 9096
+
+### eureka client 配置
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8081/eureka/
+
+### 暴露健康检查端口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

@@ -1,0 +1,19 @@
+server:
+  port: 9095
+
+spring:
+  application:
+    name: consulclient
+  cloud:
+    consul:
+      host: 127.0.0.1
+      port: 8500
+      discovery:
+        hostname: 127.0.0.1
+
+#### 开启健康检查等信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["health", "info", "metrics"]

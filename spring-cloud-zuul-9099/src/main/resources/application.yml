@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: zuul-9099
+
+
+## eureka client ≈‰÷√
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+    instance-id: ${eureka.instance.hostname}:${server.port}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8081/eureka
+
+## ∂Àø⁄≈‰÷√
+server:
+  port: 9099
+
+
+## zuul Õ¯πÿ≈‰÷√
+zuul:
+  routes:
+    # ¬∑”…≈‰÷√
+    api-producer:
+      path: /api-producer/**
+      serviceId: EUREKACLIENT-PRODUCER
+    api-consumer:
+      path: /api-consumer/**
+      serviceId: EUREKACLIENT-CONSUMER
+    api-xxx:
+      path: /api-xxx/**
+      serviceId: EUREKACLIENT-CONSUMER
